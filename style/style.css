@@ -1,0 +1,41 @@
+
+
+
+/**
+ *
+ * Main CSS
+ *
+ */
+
+ body *{
+ 	font-family: Lato;
+ }
+
+/**
+ *
+ * Viewer
+ *
+ */
+
+.viewer-wrapper{
+	position: fixed;
+	width: 55%;
+	background: #F8F8F8;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.left-w{
+	width: 45%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	padding: 5%;
+	box-sizing: border-box;
+}
+.addPizza span {
+	color: #38EAA8;
+	float: right;
+}
