@@ -35,7 +35,26 @@
 	padding: 5%;
 	box-sizing: border-box;
 }
-.addPizza span {
+.add{
 	color: #38EAA8;
 	float: right;
 }
+
+.addPizza ul{
+	list-style: none;
+	padding-top: 30px;
+	padding-left: 0px;
+}
+.addPizza ul li{
+	padding: 10px 0 10px 0;
+	font-size: 20px;
+	color:#8A939C;
+}
+.addPizza ul li.selected{
+	background: #F9F9F9;
+}
+.addPizza ul li span{
+	padding-left: 10px; 
+	box-sizing: border-box;
+}
+
