@@ -1,35 +1,56 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { PizzaAddition } from '../actions/index';
+import { PizzaAddition, PizzaSelection, deletePizza } from '../actions/index';
 
-function mapStateToProps({pizza}) {
-  return {pizza};
+function mapStateToProps(state) {
+  return {
+  	pizza: state.pizza,
+  	pizzaSelected: state.pizzaSelected
+  };
 }
 
 export class PizzaAdd extends React.Component {
 
 
-  static propTypes = {
-    name: React.PropTypes.string,
-  };
-
   constructor(props) {
     super(props);
+    this.state = { isActive: 0 };
     this.props.PizzaAddition();
-
   }
 
-  renderPizzaList = (pizza) =>{
-    
+
+
+  componentDidMount(){
+  	var that = this;
+  	setTimeout(function() {
+         var pizza = that.props.pizza[0];
+         that.SelectPizza(pizza, that.state.isActive)
+    }, 300);
+  	
   }
+
+  delete = (pizza,index) =>{
+
+  	this.props.deletePizza(pizza);
+  	var pizza = this.props.pizza[index];
+  	this.SelectPizza(pizza, index);
+
+  };
+
+  SelectPizza = (pizza,index) =>{
+  	this.props.PizzaSelection(pizza);
+  	this.setState({ isActive: index });
+
+  };
 
   render() {
+
     return (
       <div className="addPizza">
       	<span className="add" onClick={this.props.PizzaAddition}>+ add pizza</span>
         <ul>{this.props.pizza.map((key, index) => {
-          return <li key={index}> {"Pizza "+(index+1)}</li>;
+          return <li key={index} className={this.state.isActive === index ? 'selected' : ''}><div><span onClick={()=>this.SelectPizza(key,index)}> {"Pizza "+(index+1)}</span><img onClick={()=>this.delete(key,index-1)} src="./src/images/close.svg" width = '15'/></div></li>;
         })} </ul>
       </div>
     );
@@ -37,7 +58,7 @@ export class PizzaAdd extends React.Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ PizzaAddition }, dispatch);
+  return bindActionCreators({ PizzaAddition, PizzaSelection, deletePizza }, dispatch);
 }
 
 
