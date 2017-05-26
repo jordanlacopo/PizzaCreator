@@ -28,6 +28,14 @@ body {
 .top{
 	padding-top: 20px;
 }
+.wt{
+	pointer-events: none;
+	opacity: 0.5;
+}
+.wt.active{
+	pointer-events: auto;
+	opacity: 1;
+}
 .viewer-wrapper{
 	position: fixed;
 	width: 55%;

@@ -75,8 +75,8 @@ export class PizzaOptions extends React.Component {
       			}
       			</ul>
       		</div>
-          <h1 className="top">Toppings:</h1>
-          <div>
+          <h1 className={"top"}>Toppings:</h1>
+          <div className={"wt"+(this.props.pizzaSelected.Size === "" ? '' : ' active')}>
             <ul className="size-wrapper-t">
               {this.state.toppings.map((obj,index)=>{
                   let image = `./src/images/${obj}.png`

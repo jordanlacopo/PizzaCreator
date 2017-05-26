@@ -26,7 +26,7 @@ export class PizzaAdd extends React.Component {
   	setTimeout(function() {
          var pizza = that.props.pizza[0];
          that.SelectPizza(pizza, that.state.isActive)
-    }, 300);
+    }, 0);
   	
   }
 
