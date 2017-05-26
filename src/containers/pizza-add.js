@@ -31,14 +31,23 @@ export class PizzaAdd extends React.Component {
   }
 
   delete = (pizza,index) =>{
+    this.props.deletePizza(pizza);
+     if(index === -1){
+      index = 0;
+      var pizza = this.props.pizza[index+1];
+    }else{
+      var pizza = this.props.pizza[index];
+    }
 
-  	this.props.deletePizza(pizza);
-  	var pizza = this.props.pizza[index];
+
+  
+    // console.log(index, pizza);
   	this.SelectPizza(pizza, index);
 
   };
 
   SelectPizza = (pizza,index) =>{
+
   	this.props.PizzaSelection(pizza);
   	this.setState({ isActive: index });
 

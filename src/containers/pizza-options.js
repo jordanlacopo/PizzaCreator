@@ -39,9 +39,9 @@ export class PizzaOptions extends React.Component {
   };
 
   selectTopping = (obj) =>{
-    console.log(obj, this.props.pizzaSelected)
+    // console.log(obj, this.props.pizzaSelected)
     this.props.selectToppings(obj, this.props.pizzaSelected);
-  }
+  };
   fetchToppings = (topping) =>{
     if (Object.keys(this.props.pizzaSelected).length !== 0) {
       var array = this.props.pizzaSelected.Toppings;

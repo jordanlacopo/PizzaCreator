@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+//import prices
+
 function mapStateToProps(state) {
   return {
   	pizza: state.pizza,
@@ -17,25 +19,34 @@ export class PizzaViewer extends React.Component {
     super(props);
     this.state = {
     	activePizza: 0,
+      toppings:["Mushroom", "Olives", "Basil", "Pineapple", "Pepperonni","Shrimp", "Tomatto", "Peppers", "Onions"],
     }
+
   }
 
-  renderTopping = (key) =>{
-    if (Object.keys(this.props.pizzaSelected).length !== 0) {
 
+  renderTopping  = (key) => {
+
+    if (Object.keys(this.props.pizzaSelected).length !== 0) {
       if(key === this.props.pizzaSelected.pizzaId){
-        let array = this.props.pizzaSelected.Toppings;
-        let Size = this.props.pizzaSelected.Size
-          var newarray =array.map((toppings,index)=>{
-            var sectionStyle = {
-              backgroundImage:`url(./src/images/${toppings}-top.png)`
+        return this.state.toppings.map((top)=>{
+
+          let Size = this.props.pizzaSelected.Size;
+          let array = this.props.pizzaSelected.Toppings;
+          let active = false;
+          for (var i = array.length - 1; i >= 0; i--) {
+            if(array[i] === top){
+              active = true;
             }
-            return <div className={"toppings "+ Size+"-t"} style={ sectionStyle }></div>
-          })
-        return [...newarray];
+          }
+          var sectionStyle = {
+                  backgroundImage:`url(./src/images/${top}-top.png)`
+          }
+         return <div className={"toppings "+ Size+"-t dis"+( active ?" active" :" ")} style={ sectionStyle }></div>
+        })
       }
     }
-    
+
   }
 
   render() {
@@ -44,8 +55,12 @@ export class PizzaViewer extends React.Component {
       	<div className="viewer-wrapper">
 
       	{this.props.pizza.map((key, index) => {
-             console.log(key);
-      		return <div key={index} className={"pizza-wrapper "+(key.pizzaId === this.props.pizzaSelected.pizzaId ? "selected" : "dis" )+" "+(key.Size !== "" ? `${key.Size}` :'')}>{this.renderTopping(key.pizzaId)}</div>
+      		return <div key={index} className={"pizza-wrapper "+(key.pizzaId === this.props.pizzaSelected.pizzaId ? "selected" : "dis" )+" "+(key.Size !== "" ? `${key.Size}` :'')}>
+          {
+            this.renderTopping (key.pizzaId)
+
+          }
+          </div>
         })}
 
        
