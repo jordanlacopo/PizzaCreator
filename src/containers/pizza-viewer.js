@@ -20,6 +20,24 @@ export class PizzaViewer extends React.Component {
     }
   }
 
+  renderTopping = (key) =>{
+    if (Object.keys(this.props.pizzaSelected).length !== 0) {
+
+      if(key === this.props.pizzaSelected.pizzaId){
+        let array = this.props.pizzaSelected.Toppings;
+        let Size = this.props.pizzaSelected.Size
+          var newarray =array.map((toppings,index)=>{
+            var sectionStyle = {
+              backgroundImage:`url(./src/images/${toppings}-top.png)`
+            }
+            return <div className={"toppings "+ Size+"-t"} style={ sectionStyle }></div>
+          })
+        return [...newarray];
+      }
+    }
+    
+  }
+
   render() {
     return (
       <div>
@@ -27,9 +45,11 @@ export class PizzaViewer extends React.Component {
 
       	{this.props.pizza.map((key, index) => {
              console.log(key);
-    	
-      		return <div key={index} className={"pizza-wrapper "+(key.pizzaId === this.props.pizzaSelected.pizzaId ? "selected" : "dis" )+" "+(key.Size !== "" ? `${key.Size}` :'')}></div>
+      		return <div key={index} className={"pizza-wrapper "+(key.pizzaId === this.props.pizzaSelected.pizzaId ? "selected" : "dis" )+" "+(key.Size !== "" ? `${key.Size}` :'')}>{this.renderTopping(key.pizzaId)}</div>
         })}
+
+       
+
 
       	</div>
       </div>
