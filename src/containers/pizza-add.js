@@ -30,16 +30,16 @@ export class PizzaAdd extends React.Component {
   	
   }
 
+
   delete = (pizza,index) =>{
     this.props.deletePizza(pizza);
+
      if(index === -1){
       index = 0;
       var pizza = this.props.pizza[index+1];
     }else{
       var pizza = this.props.pizza[index];
     }
-
-
   
     // console.log(index, pizza);
   	this.SelectPizza(pizza, index);
@@ -59,7 +59,7 @@ export class PizzaAdd extends React.Component {
       <div className="addPizza">
       	<span className="add" onClick={this.props.PizzaAddition}>+ add pizza</span>
         <ul>{this.props.pizza.map((key, index) => {
-          return <li key={index} className={this.state.isActive === index ? 'selected' : ''}><div><span onClick={()=>this.SelectPizza(key,index)}> {"Pizza "+(index+1)}</span><img onClick={()=>this.delete(key,index-1)} src="./src/images/close.svg" width = '15'/></div></li>;
+          return <li key={index} className={this.state.isActive === index ? 'selected' : ''}><div><span onClick={()=>this.SelectPizza(key,index)}> {"Pizza "+(index+1)}</span><img className={(this.props.pizza.length <=1 ? 'dis' : 'active')}onClick={()=>this.delete(key,index-1)} src="./src/images/close.svg" width = '15'/></div></li>;
         })} </ul>
       </div>
     );

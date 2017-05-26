@@ -16,7 +16,27 @@ export class PizzaTotal extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+    	total: []
+    }
+   
   }
+
+  getTotal = () =>{
+
+  	let total = [];
+  	let finalTotal = 0;
+
+  	for (var i = this.props.pizza.length - 1; i >= 0; i--) {
+  		let element = this.props.pizza[i];
+  		total.push(this.getPizzaPrice(element));
+  	}
+  	for (var i = total.length - 1; i >= 0; i--) {
+  		finalTotal += parseFloat(total[i]);
+  	}
+  	return finalTotal.toFixed(2);
+
+  };
 
   getPizzaPrice = (pizza) =>{
 
@@ -34,6 +54,10 @@ export class PizzaTotal extends React.Component {
   	}
 
   	totalPerPizza = toppings + sizePrice;
+
+  	if(size === ""){
+  		return 0;
+  	}
 
   	return totalPerPizza.toFixed(2);
 
@@ -86,9 +110,12 @@ export class PizzaTotal extends React.Component {
       	 <h1 className="top">Order Summary:</h1>
       	  <div className="addPizza">
         	<ul>{this.props.pizza.map((key, index) => {
-          return <li key={index}><div><span> {"Pizza "+(index+1)}</span><p>{this.getPizzaPrice(key)}$</p></div></li>;
+          return <li key={index}><div><span> {"Pizza "+(index+1)}</span><p>{(this.getPizzaPrice(key) === 0 ? "please select a size" : this.getPizzaPrice(key)+"$" )}</p></div></li>;
         	})} </ul>
-        	
+        	<div className="total">
+        		<h1>{(this.getTotal() == 0.00 ? "" : "Total: "+ this.getTotal()+"$")}</h1>
+        	</div>
+
       	</div>
       </div>
     );

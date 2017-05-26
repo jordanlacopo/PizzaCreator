@@ -32,7 +32,6 @@ export class PizzaOptions extends React.Component {
   }
 
   
-
   selectSize =(obj)=>{
   	this.setState({sizeSelect: obj})
   	this.props.selectSize(obj,this.props.pizzaSelected);
@@ -42,6 +41,8 @@ export class PizzaOptions extends React.Component {
     // console.log(obj, this.props.pizzaSelected)
     this.props.selectToppings(obj, this.props.pizzaSelected);
   };
+
+
   fetchToppings = (topping) =>{
     if (Object.keys(this.props.pizzaSelected).length !== 0) {
       var array = this.props.pizzaSelected.Toppings;
@@ -77,13 +78,11 @@ export class PizzaOptions extends React.Component {
           <h1 className="top">Toppings:</h1>
           <div>
             <ul className="size-wrapper-t">
-             {this.state.toppings.map((obj,index)=>{
-              let image = `./src/images/${obj}.png`
-              return <div className="topp"><li key={obj} onClick={()=>this.selectTopping(obj)} className={ this.fetchToppings(obj) ? 'active' : 'no'}>
-              <img src={image} width = '15'/>{obj}</li></div>
-              })
+              {this.state.toppings.map((obj,index)=>{
+                  let image = `./src/images/${obj}.png`
+                  return <div className="topp"><li key={obj} onClick={()=>this.selectTopping(obj)} className={ this.fetchToppings(obj) ? 'active' : 'no'}><img src={image} width = '15'/>{obj}</li></div>
+                })
               }
-            
             </ul>
           </div>
       	</div>

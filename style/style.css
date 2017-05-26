@@ -78,10 +78,18 @@ body {
 	margin-right: 18px;
 	cursor: pointer;
 }
+
+.addPizza img.dis{
+	opacity: 0;
+	pointer-events: none;
+}
+
 .addPizza p{
 	float: right;
 	margin: 0;
 	padding: 0;
+	font-size: 15px;
+	margin-top: 5px;
 
 }
 
@@ -223,5 +231,15 @@ body {
 .Large-t{
 	background-size: 86% !important;
 
+}
+
+.total{
+	padding-right: 30px;
+	margin-bottom: 20px;
+}
+.total h1{
+	float: right;
+	/*font-size: 20px;*/
+	display: inline-block;
 }
 
