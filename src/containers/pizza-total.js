@@ -77,7 +77,10 @@ export class PizzaTotal extends React.Component {
   	}
   };
 
+  //TODO:: SWITCH TO UPPERCASE
   getToppingPrice = (topping) => {
+
+    topping
   	switch (topping) {
   		case "Mushroom":
   			return MUSHROOM
@@ -117,6 +120,7 @@ export class PizzaTotal extends React.Component {
         	</div>
 
       	</div>
+  
       </div>
     );
   }

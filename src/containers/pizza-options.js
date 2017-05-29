@@ -68,7 +68,6 @@ export class PizzaOptions extends React.Component {
       		<div>
       			<ul className="size-wrapper">
       			{this.state.sizes.map((obj,index)=>{
-           
       				return <div className="topp"><li key={index} onClick={()=>this.selectSize(obj)} className={this.props.pizzaSelected.Size === obj ? 'selected' : '' }>{obj}</li></div>
               
       			})

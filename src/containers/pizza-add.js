@@ -16,12 +16,14 @@ export class PizzaAdd extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isActive: 0 };
-    this.props.PizzaAddition();
   }
 
 
 
+
   componentDidMount(){
+
+    this.props.PizzaAddition();
   	var that = this;
   	setTimeout(function() {
          var pizza = that.props.pizza[0];
