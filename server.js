@@ -25,6 +25,12 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
+
+setInterval(function() {
+    http.get("http://pizzacc.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
+
+
 const server = http.createServer(app);
 
 /**
