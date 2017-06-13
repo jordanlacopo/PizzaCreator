@@ -1,7 +1,7 @@
 
 
-<h2>Desktop Only</h2>
+<h2>Pizza creator, made with react&redux</h2>
 
-<p>Pizza creator, made with react&redux</p>
+<p>Desktop Only</p>
 
 https://pizzacc.herokuapp.com/
